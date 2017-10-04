@@ -58,8 +58,10 @@ namespace Jeu2Des
         /// </summary>
         /// <remarks></remarks>
         public Joueur() : this("Joueur" + _Compteur)
-        { _Compteur ++; }
-        
+        {
+            _Compteur ++;
+        }
+                       
 
         /// <summary>
         /// Joue une partie : lance les 2 Des 10 fois et calacule le score du joueur
@@ -79,7 +81,7 @@ namespace Jeu2Des
             }
 
             //TODO : dans cette version le résutat est affiché à la console
-            //TODO : en attendant la mise e place du classement 
+            //TODO : en attendant la mise en place du classement 
             Console.WriteLine(this.ToString()); 
             return _Score;
         }
@@ -91,7 +93,7 @@ namespace Jeu2Des
         /// <remarks></remarks>
         public override string ToString()
         {
-            return base.ToString() + " " + Nom + ", score= " + Score;
+            return base.ToString() + " " + Nom + ", score ancien = " + Score;
         }
     }
 }
