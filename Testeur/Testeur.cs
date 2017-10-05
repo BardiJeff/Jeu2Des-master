@@ -34,7 +34,7 @@ namespace Testeur
 
             //MonJeu.VoirClassement();
 
-            Console.WriteLine("\n ------------ CLASSEMENT ---------------- \n");
+            Console.WriteLine("\n -------------- CLASSEMENT --------------- \n");
 
             MonJeu.ClassementJoueurs2();
 
