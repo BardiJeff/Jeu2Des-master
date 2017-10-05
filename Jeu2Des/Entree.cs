@@ -6,14 +6,37 @@ using Jeu2Des;
 
 namespace Jeu2Des
 {
-    public class Entree 
+    [Serializable]
+    public class Entree : IComparable
     {
+
+        // Comparaison des scores pour l'affichage du " TopN "
+        public int CompareTo(object obj)
+        {
+            Entree autre = obj as Entree;
+            if (autre != null)
+            {
+                return this.Score.CompareTo(autre.Score);
+            }
+            else
+            {
+                throw new ArgumentException("L'objet n'est pas un score !"); // Génère une EXCEPTION
+                // return 0; // Affiche un "ZERO" pour préciser  : N'est pas un objet
+            }
+        }
+        
         // ///////////////////////////////////////////////////ZONE PROPERTY
         public string Nom { get; set; }
         
         public int Score { get; set; }
-        
+
         // ////////////////////////////////////////////////////ZONE CONSTRUCTEUR
+
+        public Entree()
+        {
+            this.Nom = "Stephan";
+            this.Score = 100;
+        }
 
         // Récupération du nom et du score du joueur
         public Entree(string nom, int score)

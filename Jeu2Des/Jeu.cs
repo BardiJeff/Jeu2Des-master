@@ -89,6 +89,7 @@ namespace Jeu2Des
         public void VoirClassement()
         {
             Classement.ClassementJoueurs();
+            
         }
 
         // /////////////////////////////////  ESSAI
@@ -100,6 +101,42 @@ namespace Jeu2Des
             {
                 Console.WriteLine(E);
             }            
+        }
+
+        public void ClassementJoueurTop()
+        {
+            Classement.TopN();
+
+        }
+
+        public void SauvegardeBin()
+        {
+            Classement.SauvegardeBinaire();
+        }
+
+        public void RestaureBin()
+        {
+            Classement.RestaureBinaire();
+        }
+
+        public void SauvegardeXml()
+        {
+            Classement.SauvegardeXML();
+        }
+
+        public void RestaureXml()
+        {
+            Classement.RestaureXML();
+        }
+
+        public void SauvegardeJson()
+        {
+            Classement.SauvegardeJSON();
+        }
+
+        public void RestaureJson()
+        {
+            Classement.RestaureJSON();
         }
 
 
