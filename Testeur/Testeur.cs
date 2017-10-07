@@ -30,7 +30,7 @@ namespace Testeur
             MonJeu.JouerPartie();                   //Encore une partie 
             MonJeu.JouerPartie("Jeff");
 
-            //Console.WriteLine("\n ---------------------------- \n");
+            //Console.WriteLine("\n -------------------------------------- \n");
 
             //MonJeu.VoirClassement();
 
@@ -42,7 +42,7 @@ namespace Testeur
             MonJeu.ClassementJoueurTop();
 
             
-            // ---------------------------Serializer Binaire  -------------------");
+            // ---------------------------Serializer Binaire  ----------------");
             // Sauvegarde
             MonJeu.SauvegardeBin();
             Console.WriteLine("\n -------------- Restauration BINAIRE ----- \n");
@@ -52,14 +52,14 @@ namespace Testeur
             // ---------------------------Serializer XML  -------------------");
             // Sauvegarde
             MonJeu.SauvegardeXml();
-            Console.WriteLine("\n -------------- Restauration XML ---------- \n");
+            Console.WriteLine("\n -------------- Restauration XML --------- \n");
             // Restauration
             MonJeu.RestaureXml();
 
             // ---------------------------Serializer JSON  -------------------");
             // Sauvegarde
             MonJeu.SauvegardeJson();
-            Console.WriteLine("\n -------------- Restauration JSON ---------- \n");
+            Console.WriteLine("\n -------------- Restauration JSON --------- \n");
             // Restauration
             MonJeu.RestaureJson();
 

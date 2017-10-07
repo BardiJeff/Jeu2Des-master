@@ -8,14 +8,14 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace Jeu2Des
 {
     
-    public class Binaire : Classement
+    public class Binaire : Classement // Hérite de la classe Classement
     {
-        //  CONSTRUCTEUR
-
+        //  CONSTRUCTEUR        
         public Binaire() { }
 
         // METHODES
-
+        
+        // Redéfinition de la méthode Sauvegarde de la classe mère : Classement (Abstract)
         public override void Sauvegarde()
         {
             Stream fichierBin = File.Create("SauveBin.txt");
@@ -24,6 +24,7 @@ namespace Jeu2Des
             fichierBin.Close();
         }
 
+        // Redéfinition de la méthode Restaure de la classe mère : Classement (Abstract)
         public override void Restaure()
         {
             if (File.Exists("SauveBin.txt"))

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Jeu2Des
 {
-    public class JSON : Classement
+    public class JSON : Classement // Hérite de la classe Classement
     {
         //  CONSTRUCTEUR
 
@@ -15,6 +15,7 @@ namespace Jeu2Des
 
         // METHODES
 
+        // Redéfinition de la méthode Sauvegarde de la classe mère : Classement (Abstract)
         public override void Sauvegarde()
         {
             Stream fichierJSON = File.Create("SauveJSON.json");
@@ -25,6 +26,7 @@ namespace Jeu2Des
 
         }
 
+        // Redéfinition de la méthode Restaure de la classe mère : Classement (Abstract)
         public override void Restaure()
         {
             if (File.Exists("SauveJSON.json"))

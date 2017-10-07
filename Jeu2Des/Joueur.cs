@@ -41,6 +41,8 @@ namespace Jeu2Des
             get{ return _Score ;}       
       }
 
+
+       // ///////////////////////////////// ZONE CONSTRUCTEURS
        /// <summary>
        /// Crée un nouveau joueur à partir de son nom  
        /// </summary>

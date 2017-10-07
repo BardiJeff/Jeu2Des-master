@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace Jeu2Des
 {
 
-    public class XML : Classement
+    public class XML : Classement // Hérite de la classe Classement
     {
         //  CONSTRUCTEUR
 
@@ -16,6 +16,7 @@ namespace Jeu2Des
 
         // METHODES
 
+        // Redéfinition de la méthode Sauvegarde de la classe mère : Classement (Abstract)
         public override void Sauvegarde()
         {
             Stream fichierXML = File.Create("SauveXML.xml");
@@ -24,6 +25,7 @@ namespace Jeu2Des
             fichierXML.Close();
         }
 
+        // Redéfinition de la méthode Restaure de la classe mère : Classement (Abstract)
         public override void Restaure()
         {
             if (File.Exists("SauveXML.xml"))
