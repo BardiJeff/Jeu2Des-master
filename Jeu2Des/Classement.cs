@@ -14,7 +14,7 @@ namespace Jeu2Des
 {
     [Serializable]
     [DataContract] 
-    public class Classement
+    public abstract class Classement
     { 
         // ////////////////////////////////////////DECLARATION DU TABLEAU (LISTE)        
         private List<Entree> _ListeEntrees;
@@ -37,7 +37,7 @@ namespace Jeu2Des
             // Instanciation de la liste
             _ListeEntrees = new List<Entree>();
         }
-
+        
         // /////////////////////////////////////////ZONE METHODE
         public void AjouterEntree(string nom, int score)
         {
@@ -61,89 +61,12 @@ namespace Jeu2Des
                 Console.WriteLine(player);
             }
         }
-        
-        // ///////////////////////////////////// SAUVEGARDE ET RESTAURATION BINAIRE  
 
-        public void SauvegardeBinaire()
-        {
-            Stream fichierBin = File.Create("SauveBin.txt");
-            BinaryFormatter serializer = new BinaryFormatter();
-            serializer.Serialize(fichierBin, _ListeEntrees);
-            fichierBin.Close();
-        }
+        // ///////////////////////////////////// SAUVEGARDE ET RESTAURATION
 
-        public void RestaureBinaire()
-        {
-            if (File.Exists("SauveBin.txt"))
-            {
-                Stream fichierBin2 = File.OpenRead("SauveBin.txt");
-                BinaryFormatter serializer = new BinaryFormatter();
-                Object obj = serializer.Deserialize(fichierBin2);
+        public abstract void Sauvegarde();
 
-                Console.WriteLine(obj);
-                List<Entree> playerBin = (List<Entree>) obj;
+        public abstract void Restaure();
                 
-                foreach (Entree afficheBin in playerBin)
-                {
-                    Console.WriteLine(afficheBin);
-                }
-                fichierBin2.Close();
-            }            
-        }
-
-        // ///////////////////////////////////// SAUVEGARDE ET RESTAURATION XML 
-
-        public void SauvegardeXML()
-        {
-            Stream fichierXML = File.Create("SauveXML.xml");
-            XmlSerializer serializer2 = new XmlSerializer(_ListeEntrees.GetType());
-            serializer2.Serialize(fichierXML, _ListeEntrees);
-            fichierXML.Close();
-        }
-
-        public void RestaureXML()
-        {
-            if (File.Exists("SauveXML.xml"))
-            {
-                Stream fichierXML2 = File.OpenRead("SauveXML.xml");
-                XmlSerializer serializer2 = new XmlSerializer(typeof(List<Entree>));
-                Object obj2 = serializer2.Deserialize(fichierXML2);  
-
-                Console.WriteLine(obj2);
-                foreach (Entree afficheXml in ((List<Entree>)obj2))
-                {
-                    Console.WriteLine(afficheXml);
-                }
-                fichierXML2.Close();
-            }
-        }
-
-        // ///////////////////////////////////// SAUVEGARDE ET RESTAURATION JSON
-
-        public void SauvegardeJSON()
-        {
-            Stream fichierJSON = File.Create("SauveJSON.json");
-
-            DataContractJsonSerializer serializer =  new DataContractJsonSerializer(_ListeEntrees.GetType());
-            serializer.WriteObject(fichierJSON, _ListeEntrees);
-            fichierJSON.Close();
-
-        }
-
-        public void RestaureJSON()
-        {
-            if (File.Exists("SauveJSON.json"))
-            {
-                Stream fichierJSON2 = File.OpenRead("SauveJSON.json");
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Entree>));
-                List<Entree> RecupFichierJson = (List<Entree>)serializer.ReadObject(fichierJSON2);
-
-                foreach (var RecupJson in RecupFichierJson)
-                {
-                    Console.Out.WriteLine(RecupJson);
-                }
-                fichierJSON2.Close();
-            }
-        }
     }
 }

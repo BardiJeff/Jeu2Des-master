@@ -21,6 +21,14 @@ namespace Jeu2Des
         // Lien avec la classe " Joueur "   /////////////////////  LIEN JOUEUR //
         private Joueur _Joueur;
 
+        private Binaire Binaire;
+
+        private XML  XML;
+
+        private JSON JSON;
+
+
+
         /// <summary>
         /// Représente le joueur courant (celui qui joue une partie)
         /// </summary>
@@ -33,7 +41,7 @@ namespace Jeu2Des
         private De[] _Des = new De[2];
 
         // Lien avec la classe " Classement "   /////////////////////  LIEN CLASSEMENT //
-        private Classement Classement;
+        //private Classement Classement;
 
 
         /// <summary>
@@ -41,8 +49,10 @@ namespace Jeu2Des
         /// </summary> 
         public Jeu()
         {
-            // A la création du jeu : Création du classement
-             Classement = new Classement();
+            // A la création du jeu : Création du classement            
+            Binaire = new Binaire();
+            XML = new XML();
+            JSON  = new JSON();
 
             //A la création du jeu : les 2 dés sont crées 
             //On aurait pu créer les 2 Des juste au moment de jouer  
@@ -64,8 +74,10 @@ namespace Jeu2Des
             //On fait jouer le joueur en lui passant les 2 dés
             int resultat = _Joueur.Jouer(_Des);           
 
-            Classement.AjouterEntree(_Joueur.Nom, resultat); 
-                       
+            Binaire.AjouterEntree(_Joueur.Nom, resultat);
+            JSON.AjouterEntree(_Joueur.Nom, resultat); 
+            XML.AjouterEntree(_Joueur.Nom, resultat);
+
         }
 
         /// <summary>
@@ -81,62 +93,59 @@ namespace Jeu2Des
             //Le joueur Joue et on récupère son score
             int resultat = _Joueur.Jouer(_Des);
 
-            Classement.AjouterEntree(_Joueur.Nom, resultat);
+            Binaire.AjouterEntree(_Joueur.Nom, resultat);
+            JSON.AjouterEntree(_Joueur.Nom, resultat);
+            XML.AjouterEntree(_Joueur.Nom, resultat);
 
         }
 
         // Accès à la méthode " ClassementJoueurs " de la classe " Classement " 
         public void VoirClassement()
         {
-            Classement.ClassementJoueurs();
-            
+            Binaire.ClassementJoueurs();
+            XML.ClassementJoueurs();
+            JSON.ClassementJoueurs();            
         }
-
-        // /////////////////////////////////  ESSAI
-
-        // Accès à la méthode     THIS   " ClassementJoueurs2 "  
-        public void ClassementJoueurs2()
-        {
-            foreach (Entree E in Classement.ListeEntrees)
-            {
-                Console.WriteLine(E);
-            }            
-        }
+        
 
         public void ClassementJoueurTop()
         {
-            Classement.TopN();
-
+            Console.WriteLine(" Classement Top N -  Binaire -------------------------");            
+            Binaire.TopN();
+            Console.WriteLine("\n Classement Top N -  XML -----------------------------");
+            XML.TopN();
+            Console.WriteLine("\n Classement Top N -  JSON ----------------------------");
+            JSON.TopN();
         }
 
         public void SauvegardeBin()
-        {
-            Classement.SauvegardeBinaire();
+        {           
+            Binaire.Sauvegarde();
         }
 
         public void RestaureBin()
         {
-            Classement.RestaureBinaire();
+            Binaire.Restaure();
         }
 
         public void SauvegardeXml()
         {
-            Classement.SauvegardeXML();
+            XML.Sauvegarde();
         }
 
         public void RestaureXml()
         {
-            Classement.RestaureXML();
+            XML.Restaure();
         }
 
         public void SauvegardeJson()
         {
-            Classement.SauvegardeJSON();
+            JSON.Sauvegarde();
         }
 
         public void RestaureJson()
         {
-            Classement.RestaureJSON();
+            JSON.Restaure();
         }
 
 

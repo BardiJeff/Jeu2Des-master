@@ -55,12 +55,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binaire.cs" />
     <Compile Include="Classement.cs" />
     <Compile Include="De.cs" />
     <Compile Include="Entree.cs" />
     <Compile Include="Jeu.cs" />
     <Compile Include="Joueur.cs" />
+    <Compile Include="JSON.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XML.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Jeu2Des.snk" />
