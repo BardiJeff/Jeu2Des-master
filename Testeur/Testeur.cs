@@ -18,6 +18,20 @@ namespace Testeur
             //Le jeu est crée (avec ses 2 des et son classement)
             Jeu MonJeu = new Jeu();
 
+            Console.WriteLine("Veuillez saisir votre prénom");
+            string prenom = Console.ReadLine();
+
+            Console.WriteLine("Bonjour " + prenom + " , Veuillez appuyez sur une touche pour passer à l'étape suivante \n" );
+            Console.ReadKey();
+
+
+            //  SAUVEGARDE - choix de la méthode
+            Console.WriteLine("Veuillez choisir une méthode de sauvegarde");
+            Console.WriteLine("\n Tapez 1 : Sauvegarde Binaire\n Tapez 2 : Sauvegarde XML\n Tapez 3 : Sauvegarde JSON ");
+            int choixUser =  Convert.ToInt32(Console.ReadLine()); ////////// TESTER LA VALEUR ////////////////////
+            
+            MonJeu.ChoixSauve(choixUser);
+
             Console.WriteLine("\n --------------- INITIAL --------------- \n");
 
             //Jouons quelques parties ....
@@ -28,41 +42,21 @@ namespace Testeur
             MonJeu.JouerPartie("Sarah");            //Encore une partie 
             MonJeu.JouerPartie("Lucie");            //Encore une partie
             MonJeu.JouerPartie();                   //Encore une partie 
-            MonJeu.JouerPartie("Jeff");
+            MonJeu.JouerPartie(prenom);
 
             //Console.WriteLine("\n -------------------------------------- \n");
 
             //MonJeu.VoirClassement();
 
-            Console.WriteLine("\n -------------- CLASSEMENT --------------- \n");
+            //Console.WriteLine("\n -------------- CLASSEMENT --------------- \n");
 
-            MonJeu.VoirClassement();
+            //MonJeu.VoirClassement();            
 
             Console.WriteLine("\n -------------- TOP N ------------------- \n");
+            Console.WriteLine("\n Etes vous présent dans le score final ?? \n\n");
             MonJeu.ClassementJoueurTop();
 
-            
-            // ---------------------------Serializer Binaire  ----------------");
-            // Sauvegarde
-            MonJeu.SauvegardeBin();
-            Console.WriteLine("\n -------------- Restauration BINAIRE ----- \n");
-            // Restauration
-            MonJeu.RestaureBin();
-
-            // ---------------------------Serializer XML  -------------------");
-            // Sauvegarde
-            MonJeu.SauvegardeXml();
-            Console.WriteLine("\n -------------- Restauration XML --------- \n");
-            // Restauration
-            MonJeu.RestaureXml();
-
-            // ---------------------------Serializer JSON  -------------------");
-            // Sauvegarde
-            MonJeu.SauvegardeJson();
-            Console.WriteLine("\n -------------- Restauration JSON --------- \n");
-            // Restauration
-            MonJeu.RestaureJson();
-
+            //MonJeu.Quitter();
 
             Console.ReadKey();            
         }

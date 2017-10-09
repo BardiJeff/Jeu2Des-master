@@ -20,10 +20,13 @@ namespace Jeu2Des
         // Lien avec la classe " Joueur "  
         private Joueur _Joueur;
 
+
+        private Classement sauvegarde; // Permet l'instanciation des classes Binaire, XML et JSONdans le " SWITCH "
+
         // Lien avec la classe " Binaire " - " XML " - " JSON "
-        private Binaire Binaire;
-        private XML  XML;
-        private JSON JSON;
+        //private Binaire Binaire;
+        //private XML  XML;
+        //private JSON JSON;
 
         /// <summary>
         /// Représente le joueur courant (celui qui joue une partie)
@@ -35,7 +38,7 @@ namespace Jeu2Des
         }
     
         // Création (Instanciation) des Dés au nombre de deux (Tableau)
-        private De[] _Des = new De[2];       
+        private De[] _Des = new De[2];
 
 
         // ////////////////////// ZONE CONSTRUCTEUR
@@ -46,17 +49,41 @@ namespace Jeu2Des
         public Jeu()
         {
             // A la création du jeu : (Instanciation) des classes  " Binaire " - " XML " - " JSON " déclarés en ligne 23 - 24 - 25           
-            Binaire = new Binaire();
-            XML = new XML();
-            JSON  = new JSON();
+            //Binaire = new Binaire();
+            //XML = new XML();
+            //JSON = new JSON();
 
             //A la création du jeu : les 2 dés sont crées 
             //On aurait pu créer les 2 Des juste au moment de jouer  
             _Des[0] = new De();
-            _Des[1] = new De();            
+            _Des[1] = new De();
         }
-
         // /////////////////////////////////// ZONE METHODES
+
+
+        public void ChoixSauve(int choix)
+        {
+            // Sélection du choix utilisateur pour le tupe de sauvegarde          
+            int? test = choix;
+            
+                switch (choix)
+                {
+                    case 1:
+                        sauvegarde = new Binaire();
+                        break;
+
+                    case 2:
+                        sauvegarde = new XML();
+                        break;
+
+                    default:
+                        sauvegarde = new JSON();
+                        break;
+                }   
+
+            
+            sauvegarde.Sauvegarde(); // Lancement de la méthode " Sauvegarde " pour la classe choisie
+        } 
 
         /// <summary>
         /// Permet de faire une partie du jeu de dés en indiquant le nom du joueur
@@ -68,12 +95,10 @@ namespace Jeu2Des
             _Joueur = new Joueur(nom);            
 
             //On fait jouer le joueur en lui passant les 2 dés
-            int resultat = _Joueur.Jouer(_Des);           
+            int resultat = _Joueur.Jouer(_Des);
 
             // Ajout des joueurs et scores pour chaque type de fichier
-            Binaire.AjouterEntree(_Joueur.Nom, resultat);
-            JSON.AjouterEntree(_Joueur.Nom, resultat); 
-            XML.AjouterEntree(_Joueur.Nom, resultat);
+            sauvegarde.AjouterEntree(_Joueur.Nom, resultat);
         }
 
         /// <summary>
@@ -89,63 +114,28 @@ namespace Jeu2Des
             int resultat = _Joueur.Jouer(_Des);
 
             // Ajout des joueurs et scores pour chaque type de fichier
-            Binaire.AjouterEntree(_Joueur.Nom, resultat);
-            JSON.AjouterEntree(_Joueur.Nom, resultat);
-            XML.AjouterEntree(_Joueur.Nom, resultat);
+            sauvegarde.AjouterEntree(_Joueur.Nom, resultat);
         }
 
         // Accès à la méthode " ClassementJoueurs " de la classe " Classement " 
         public void VoirClassement()
         {
-            Binaire.ClassementJoueurs();
-            XML.ClassementJoueurs();
-            JSON.ClassementJoueurs();            
+            sauvegarde.ClassementJoueurs();           
         }
 
         // Accès à la méthode " TopN " de la classe " Classement " 
         public void ClassementJoueurTop()
         {
-            Console.WriteLine(" Classement Top N -  Binaire -------------------------");            
-            Binaire.TopN();
-            Console.WriteLine("\n Classement Top N -  XML -----------------------------");
-            XML.TopN();
-            Console.WriteLine("\n Classement Top N -  JSON ----------------------------");
-            JSON.TopN();
+            //Console.WriteLine(" Classement Top N ");
+            sauvegarde.TopN();
         }
 
-        // Méthodes pour la sauvegarde et la restauration de la LISTE pour chaque type de fichier
+        // Méthode " QUITTER " qui sort du jeu et affiche la restauration dans le type de sauvegarde choisi
 
-        // BINAIRE
-        public void SauvegardeBin()
-        {           
-            Binaire.Sauvegarde();
-        }
-
-        public void RestaureBin()
+        public void Quitter()
         {
-            Binaire.Restaure();
-        }
-
-        // XML
-        public void SauvegardeXml()
-        {
-            XML.Sauvegarde();
-        }
-
-        public void RestaureXml()
-        {
-            XML.Restaure();
-        }
-
-        // JSON
-        public void SauvegardeJson()
-        {
-            JSON.Sauvegarde();
-        }
-
-        public void RestaureJson()
-        {
-            JSON.Restaure();
-        }
+            Environment.Exit(0);
+            sauvegarde.Restaure();
+        }        
     }
 }

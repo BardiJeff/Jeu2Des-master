@@ -11,7 +11,7 @@ namespace Jeu2Des
     {
         //  CONSTRUCTEUR
 
-        public JSON() { }
+        //public JSON() { }
 
         // METHODES
 
@@ -38,10 +38,10 @@ namespace Jeu2Des
                 foreach (var RecupJson in RecupFichierJson)
                 {
                     Console.Out.WriteLine(RecupJson);
+                    AjouterEntree(RecupJson.Nom, RecupJson.Score);
                 }
                 fichierJSON2.Close();
             }
         }
-
     }
 }

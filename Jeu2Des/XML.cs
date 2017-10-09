@@ -12,7 +12,7 @@ namespace Jeu2Des
     {
         //  CONSTRUCTEUR
 
-        public XML() { }
+        //public XML() { }
 
         // METHODES
 
@@ -38,6 +38,7 @@ namespace Jeu2Des
                 foreach (Entree afficheXml in ((List<Entree>)obj2))
                 {
                     Console.WriteLine(afficheXml);
+                    AjouterEntree(afficheXml.Nom, afficheXml.Score);
                 }
                 fichierXML2.Close();
             }

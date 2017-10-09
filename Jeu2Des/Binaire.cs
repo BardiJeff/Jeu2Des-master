@@ -11,7 +11,7 @@ namespace Jeu2Des
     public class Binaire : Classement // Hérite de la classe Classement
     {
         //  CONSTRUCTEUR        
-        public Binaire() { }
+       // public Binaire() { }
 
         // METHODES
         
@@ -39,6 +39,7 @@ namespace Jeu2Des
                 foreach (Entree afficheBin in playerBin)
                 {
                     Console.WriteLine(afficheBin);
+                    AjouterEntree(afficheBin.Nom, afficheBin.Score);
                 }
                 fichierBin2.Close();
             }

@@ -69,7 +69,7 @@ namespace Jeu2Des
         // ///////////////////////////////////// SAUVEGARDE ET RESTAURATION
 
         // Méthodes permettant d'effectuer la Sauvegarde et la Restauration du résultat ( LISTE)
-        // Méthodes "vides" dans une classe "Abstract" implique une redéfinition dans es classes filles
+        // Méthodes "vides" dans une classe "Abstract
         public abstract void Sauvegarde();
 
         public abstract void Restaure();
