@@ -52,7 +52,7 @@ namespace Testeur
 
             //MonJeu.VoirClassement();            
 
-            Console.WriteLine("\n -------------- TOP N ------------------- \n");
+            Console.WriteLine("\n -------------- TOP 5 ------------------- \n");
             Console.WriteLine("\n Etes vous présent dans le score final ?? \n\n");
             MonJeu.ClassementJoueurTop();
 

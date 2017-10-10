@@ -52,18 +52,29 @@ namespace Jeu2Des
             }
         }
 
-        // Méthode "TopN" Permettant de : 
-        // - Comparer avec "SORT3 suite à l'implémentation de l'interface IComparable
+        // Méthode "Top 5" Permettant de : 
+        // - Comparer avec "SORT" suite à l'implémentation de l'interface IComparable
         // - Inverser avec "Reverse" les éléments de la LISTE
-        // - Afficher le contenu de la LISTE 
+        // - Afficher le contenu de la LISTE limitée aux 5 plus hauts scores 
         public void TopN()
         {
             ListeEntrees.Sort();
             ListeEntrees.Reverse();
-            foreach (Entree player in ListeEntrees)
+
+            for (int i = 0; i < ListeEntrees.Count; i++)
             {
-                Console.WriteLine(player);
+                if (i < 5)
+                {
+                    Console.WriteLine(ListeEntrees[i]);
+                }                
             }
+
+            /////////////////////////////////////////////////////////////////////////
+
+            //foreach (Entree player in ListeEntrees)
+            //{
+            //    Console.WriteLine(player);
+            //}
         }
 
         // ///////////////////////////////////// SAUVEGARDE ET RESTAURATION
